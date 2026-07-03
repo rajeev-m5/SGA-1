@@ -1,0 +1,77 @@
+Question 5: Storage Assessment and Documentation
+
+Command: collect storage device, mount, disk usage, and inode information
+Output:
+--- lsblk ---
+NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+loop0     7:0    0 63.8M  1 loop 
+loop1     7:1    0 91.7M  1 loop 
+loop2     7:2    0 49.3M  1 loop 
+loop3     7:3    0  257G  0 loop 
+loop4     7:4    0   32G  0 loop /workspaces/.codespaces/.persistedshare
+                                 /home/vscode/.minikube
+                                 /var/lib/docker
+                                 /etc/hosts
+                                 /etc/hostname
+                                 /etc/resolv.conf
+                                 /workspaces
+loop5     7:5    0  500M  0 loop 
+sda       8:0    0   30G  0 disk 
+├─sda1    8:1    0 29.9G  0 part /workspaces/.codespaces/shared
+│                                /.codespaces/bin
+│                                /vscode
+│                                /usr/sbin/docker-init
+├─sda14   8:14   0    4M  0 part 
+└─sda15   8:15   0  106M  0 part 
+sdb       8:16   0   45G  0 disk 
+└─sdb1    8:17   0   45G  0 part /tmp
+sdc       8:32   0  512G  0 disk 
+└─sdc1    8:33   0  512G  0 part 
+sr0      11:0    1  628K  0 rom  
+--- mount ---
+overlay on / type overlay (rw,relatime,lowerdir=/var/lib/docker/overlay2/l/D322BP3N5JCCAMKEEBBV65BY6P:/var/lib/docker/overlay2/l/TFH542TSJWODOBMDVGAHUWBJI7:/var/lib/docker/overlay2/l/XVFC5Z3LVCCQFSSI67FCZ3HIPG:/var/lib/docker/overlay2/l/5BKZJN3UJVEODOOBVBLTJ3MS6N:/var/lib/docker/overlay2/l/BJAGCNJAXJI3GQOYNMSDXVYTVP:/var/lib/docker/overlay2/l/IRKK67F444YAWGWGVTHOB2FFXV:/var/lib/docker/overlay2/l/VO6DJXUGTPPBBNQ7T2JLRVQAH6:/var/lib/docker/overlay2/l/7EIXDNIN3IEOFI6YN2H6PEN6VU:/var/lib/docker/overlay2/l/B6L4AKMOB5QYQ4XFGDLQ64QXEG:/var/lib/docker/overlay2/l/HSL5CFUQ5UND4DCXVRIDVG5PYR:/var/lib/docker/overlay2/l/OTCVRZKTDTG7N7NLRTW5YGMAU2:/var/lib/docker/overlay2/l/G2RM6EXV6DT6I4VEHZDDQURDHH:/var/lib/docker/overlay2/l/UXCMEEXTPONRMVTI6WR7UFISEE:/var/lib/docker/overlay2/l/D5KZZDPZ5PVN4KGXNGWESEMNKD:/var/lib/docker/overlay2/l/IP4FXG3UU5V6CFGRS4ZHRYSRJC:/var/lib/docker/overlay2/l/SRDFTZF2UDA5OFJXKZHTKZJNXG:/var/lib/docker/overlay2/l/E6AC6U5MYHGQZI7XLFVMOK6SYP:/var/lib/docker/overlay2/l/KFPZ46SEJDRLFDBI5N5VDPVXXI:/var/lib/docker/overlay2/l/3WHYMHVUNNK32DS6WSK3Y2C3NM:/var/lib/docker/overlay2/l/RAOTUFYH7WQVQW6MIMF4CZQZXF:/var/lib/docker/overlay2/l/7KTIRH6MNODCRDEJMTD6DCK7AF:/var/lib/docker/overlay2/l/6MIQKY4LHMLU2OBVE4QWOWBGOG:/var/lib/docker/overlay2/l/KLISC5YUOZEE6BEPAINOXO7BQ3:/var/lib/docker/overlay2/l/RPWUXYRI2R3BTJPBMITQLDQU6V:/var/lib/docker/overlay2/l/ZLXAE6VBZURHBVLYVG6SCW7BDK:/var/lib/docker/overlay2/l/LNOXFRL72JV7KKOP7I5EPM3P34:/var/lib/docker/overlay2/l/MBISG4RYLTZLEJIO5ZYNIM3DCS:/var/lib/docker/overlay2/l/6B4APAATKJQ4ES3NFZ7RQHKQQ5:/var/lib/docker/overlay2/l/BGWWSNP6ORD4O5O5X4IGSRFFVF:/var/lib/docker/overlay2/l/APIPPXFFUUCXLNAEFGC4GJOWDZ:/var/lib/docker/overlay2/l/ZBDOJ3F3NZ2LEYVRAJOUJ3Z6RS:/var/lib/docker/overlay2/l/424JWNSD447XEXLOMW2PUU5NYI:/var/lib/docker/overlay2/l/KL3C2OZXXJJYQUODLUA3CUMI2V:/var/lib/docker/overlay2/l/UM6HR3DAGTMDCFJ2S5DC5SUEOU,upperdir=/var/lib/docker/overlay2/3e4604f649cd0a80cc51b8bb166946cf9ba087e5aabae0152f9f6478c16935a9/diff,workdir=/var/lib/docker/overlay2/3e4604f649cd0a80cc51b8bb166946cf9ba087e5aabae0152f9f6478c16935a9/work,nouserxattr)
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /dev type tmpfs (rw,nosuid,size=65536k,mode=755,inode64)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=666)
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
+cgroup on /sys/fs/cgroup type cgroup2 (rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot)
+mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime)
+shm on /dev/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,size=65536k,inode64)
+/dev/sda1 on /usr/sbin/docker-init type ext4 (ro,relatime,discard,errors=remount-ro)
+/dev/loop4 on /workspaces type ext4 (rw,nodev,relatime)
+/dev/sdb1 on /tmp type ext4 (rw,relatime)
+/dev/sda1 on /vscode type ext4 (rw,relatime,discard,errors=remount-ro)
+/dev/sda1 on /.codespaces/bin type ext4 (rw,relatime,discard,errors=remount-ro)
+/dev/loop4 on /etc/resolv.conf type ext4 (rw,nodev,relatime)
+/dev/loop4 on /etc/hostname type ext4 (rw,nodev,relatime)
+/dev/loop4 on /etc/hosts type ext4 (rw,nodev,relatime)
+/dev/loop4 on /var/lib/docker type ext4 (rw,nodev,relatime)
+/dev/loop4 on /home/vscode/.minikube type ext4 (rw,nodev,relatime)
+/dev/sda1 on /workspaces/.codespaces/shared type ext4 (rw,relatime,discard,errors=remount-ro)
+/dev/loop4 on /workspaces/.codespaces/.persistedshare type ext4 (rw,nodev,relatime)
+--- df -h ---
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          32G  9.6G   21G  33% /
+tmpfs            64M     0   64M   0% /dev
+shm              64M     0   64M   0% /dev/shm
+/dev/root        29G   24G  5.4G  82% /vscode
+/dev/loop4       32G  9.6G   21G  33% /workspaces
+/dev/sdb1        44G  1.7G   41G   5% /tmp
+--- df -i ---
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+overlay        2097152 203075 1894077   10% /
+tmpfs          1016900    213 1016687    1% /dev
+shm            1016900      1 1016899    1% /dev/shm
+/dev/root      3870720 243618 3627102    7% /vscode
+/dev/loop4     2097152 203075 1894077   10% /workspaces
+/dev/sdb1      2949120     37 2949083    1% /tmp
+
+Observations:
+- The environment has several block devices, including a 30G system disk and a 45G tmp disk.
+- The root and workspace filesystems are mounted with available space, and inode usage is low.
+- The current storage state is healthy for this lab environment, but monitoring should continue as data grows.
+
+Recommendations:
+- Keep an eye on disk usage on /workspaces and /vscode as data volume increases.
+- Clean temporary files regularly and archive old logs to preserve space.
+- Add monitoring for inode exhaustion and disk utilization thresholds.

@@ -1,0 +1,19 @@
+Question 2: Secure Project Workspace Setup
+
+Command: mkdir -p secure_workspace/{docs,src,logs} && touch ...
+Output:
+touch: cannot touch 'secure_workspace/docs/plan.txt': No such file or directory
+touch: cannot touch 'secure_workspace/src/app.txt': No such file or directory
+touch: cannot touch 'secure_workspace/logs/activity.log': No such file or directory
+
+Command: ls -ld secure_workspace secure_workspace/*
+Output:
+--- initial permissions ---
+drwxrwxrwx+ 3 codespace codespace 4096 Jul  3 16:44 secure_workspace
+drwxrwxrwx+ 2 codespace codespace 4096 Jul  3 16:44 secure_workspace/{docs,src,logs}
+
+Command: chmod 750 ... && chmod 640 ...
+Output:
+chmod: cannot access 'secure_workspace/docs': No such file or directory
+chmod: cannot access 'secure_workspace/src': No such file or directory
+chmod: cannot access 'secure_workspace/logs': No such file or directory

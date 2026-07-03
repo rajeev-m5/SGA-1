@@ -1,0 +1,25 @@
+Question 1: Linux Environment Verification
+
+Command: whoami
+Output:
+codespace
+
+Command: groups
+Output:
+codespace pipx python oryx golang docker sdkman rvm php conda nvs nvm hugo ssh
+
+Command: echo "$SHELL"
+Output:
+/bin/bash
+
+Command: pwd
+Output:
+/workspaces/SGA-1/q1
+
+Command: ls -ls
+Output:
+total 0
+
+Command: curl -s --max-time 10 https://youtube.com > /dev/null && echo "Network: youtube.com reachable"
+Output:
+Network: youtube.com reachable

@@ -1,0 +1,55 @@
+Question 4: File Access and I/O Investigation
+
+Command: investigate open files, file descriptors, redirection, and resource limits
+Output:
+--- lsof head ---
+COMMAND     PID   TID TASKCMD        USER   FD      TYPE             DEVICE  SIZE/OFF    NODE NAME
+docker-in     1                 codespace  cwd       DIR               0,45      4096 1101733 /
+docker-in     1                 codespace  rtd       DIR               0,45      4096 1101733 /
+docker-in     1                 codespace  txt       REG                8,1    845272  774629 /usr/sbin/docker-init
+docker-in     1                 codespace    0u      CHR                1,3       0t0      49 /dev/null
+docker-in     1                 codespace    1w     FIFO               0,14       0t0   25467 pipe
+docker-in     1                 codespace    2w     FIFO               0,14       0t0   25468 pipe
+sh            7                 codespace  cwd       DIR               0,45      4096 1101733 /
+sh            7                 codespace  rtd       DIR               0,45      4096 1101733 /
+sh            7                 codespace  txt       REG               0,45    129784 1048830 /usr/bin/dash
+sh            7                 codespace  mem       REG               0,45   2125328 1049464 /usr/lib/x86_64-linux-gnu/libc.so.6
+sh            7                 codespace  mem       REG               0,45    236616 1049444 /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+sh            7                 codespace    0u      CHR                1,3       0t0      49 /dev/null
+sh            7                 codespace    1w     FIFO               0,14       0t0   25467 pipe
+sh            7                 codespace    2w     FIFO               0,14       0t0   25468 pipe
+sshd        178                      root  cwd   unknown                                      /proc/178/cwd (readlink: Permission denied)
+sshd        178                      root  rtd   unknown                                      /proc/178/root (readlink: Permission denied)
+sshd        178                      root  txt   unknown                                      /proc/178/exe (readlink: Permission denied)
+sshd        178                      root NOFD                                                /proc/178/fd (opendir: Permission denied)
+dockerd     257                      root  cwd   unknown                                      /proc/257/cwd (readlink: Permission denied)
+--- open fd after exec ---
+sh      33481 codespace    3r   REG    7,4       16 1310806 /workspaces/SGA-1/q4/app.log
+--- proc fd listing ---
+lr-x------ 1 codespace codespace 64 Jul  3 16:44 3 -> /workspaces/SGA-1/q4/app.log
+--- full fd listing ---
+total 0
+lr-x------ 1 codespace codespace 64 Jul  3 16:44 0 -> pipe:[954765]
+l-wx------ 1 codespace codespace 64 Jul  3 16:44 1 -> pipe:[954965]
+l-wx------ 1 codespace codespace 64 Jul  3 16:44 2 -> pipe:[954966]
+lr-x------ 1 codespace codespace 64 Jul  3 16:44 3 -> /workspaces/SGA-1/q4/app.log
+--- stdout redirect ---
+--- stderr redirect ---
+--- combined redirection ---
+--- ulimit ---
+time(seconds)        unlimited
+file(blocks)         unlimited
+data(kbytes)         unlimited
+stack(kbytes)        8192
+coredump(blocks)     unlimited
+memory(kbytes)       unlimited
+locked memory(kbytes) 8192
+process              unlimited
+nofiles              524288
+vmemory(kbytes)      unlimited
+locks                unlimited
+rtprio               0
+--- created files ---
+-rw-rw-rw- 1 codespace codespace 316 Jul  3 16:44 combined.txt
+-rw-rw-rw- 1 codespace codespace  64 Jul  3 16:44 stderr.txt
+-rw-rw-rw- 1 codespace codespace 125 Jul  3 16:44 stdout.txt
